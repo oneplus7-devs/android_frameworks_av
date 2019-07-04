@@ -1295,11 +1295,6 @@ Status CameraService::connectHelper(const sp<CALLBACK>& cameraCb, const String8&
         int api1CameraId, int halVersion, const String16& clientPackageName, int clientUid,
         int clientPid, apiLevel effectiveApiLevel, bool legacyMode, bool shimUpdateOnly,
         /*out*/sp<CLIENT>& device) {
-    sp<ICameraMotor> motor_service = ICameraMotor::getService();
-    if (motor_service != nullptr) {
-        motor_service->onConnect(std::stoi(cameraId.string()));
-    }
-    
     binder::Status ret = binder::Status::ok();
 
     String8 clientName8(clientPackageName);
